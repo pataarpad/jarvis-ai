@@ -31,13 +31,15 @@
         try {
           const response = await fetch('https://jarvis-proxy.fly.dev/chat', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+              'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ message: text })
           });
 
           if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.error || "Proxy/API hiba");
+            throw new Error(errorData.error || "Proxy vagy API válaszhiba");
           }
 
           const data = await response.json();
